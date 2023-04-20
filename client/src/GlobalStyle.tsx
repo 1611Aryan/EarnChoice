@@ -27,6 +27,22 @@ const style = css`
     --login-form-input-bg: #fff;
     --login-form-button-bg: #00adb5;
     --login-form-button-text: #fff;
+
+    //dashboard colors
+    --dashboard-background: #fff;
+    --dashboard-heading: #000;
+    --dashboard-text: #00adb5;
+    --dashboard-button-bg: #00adb5;
+    --dashboard-button-text: #fff;
+    --dashboard-button-hover-bg: #00adb5;
+    --dashboard-button-hover-text: #fff;
+    --dashboard-button-active-bg: #00adb5;
+    --dashboard-button-active-text: #fff;
+    --dashboard-button-disabled-bg: #fff;
+    --dashboard-button-disabled-text: #00adb5;
+    --dashboard-button-disabled-hover-bg: #00adb5;
+    --dashboard-button-disabled-hover-text: #fff;
+    --dashboard-button-disabled-active-bg: #00adb5;
   }
 
   body {
@@ -41,6 +57,15 @@ const style = css`
   button,
   a {
     cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style-type: none;
   }
 
   button,

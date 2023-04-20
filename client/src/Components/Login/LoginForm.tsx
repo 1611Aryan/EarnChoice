@@ -1,31 +1,41 @@
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
-const LoginForm = () => (
-  <StyledForm>
-    <h2>Login Form</h2>
-    <div className="form-group">
-      <input
-        type="text"
-        className="form-control"
-        id="email"
-        placeholder="Username"
-      />
-      <span className="hover"></span>
-    </div>
-    <div className="form-group">
-      <input
-        type="password"
-        className="form-control"
-        id="password"
-        placeholder="Password"
-      />
-      <span className="hover"></span>
-    </div>
-    <button type="submit" className="btn btn-primary">
-      Login
-    </button>
-  </StyledForm>
-);
+const LoginForm = () => {
+  const navigate = useNavigate();
+
+  const submitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('dashboard');
+  };
+
+  return (
+    <StyledForm onSubmit={submitHandler}>
+      <h2>Login Form</h2>
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control"
+          id="email"
+          placeholder="Username"
+        />
+        <span className="hover"></span>
+      </div>
+      <div className="form-group">
+        <input
+          type="password"
+          className="form-control"
+          id="password"
+          placeholder="Password"
+        />
+        <span className="hover"></span>
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Login
+      </button>
+    </StyledForm>
+  );
+};
 
 const StyledForm = styled.form`
   --input-hover-height: 3px;

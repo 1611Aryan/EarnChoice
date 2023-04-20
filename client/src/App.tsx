@@ -1,9 +1,12 @@
-import Login from './Pages/Login';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Router from './Router';
 
 function App() {
+  const router = createBrowserRouter(Router());
+
   return (
     <div className="App">
-      <Login />
+      <RouterProvider router={router} />
     </div>
   );
 }
