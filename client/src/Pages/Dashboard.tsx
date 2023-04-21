@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { RiMenu3Line } from 'react-icons/ri';
 import DashboardNav from '../Components/Dashboard/DashboardNav';
 import TextLogo from '../Components/Shared/TextLogo';
 import Account from '../Sections/Account';
@@ -13,20 +14,44 @@ export type IActive = 'tickets' | 'users' | 'reports' | 'purchased' | 'account';
 
 const Dashboard = () => {
   const [active, setActive] = useState<IActive>('tickets');
+  const [menu, setMenu] = useState(false);
+  const openMenu = () => setMenu(true);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
+  }, []);
 
   return (
     <StyledDashboard>
-      <header>
+      <header className="dashboardHeader">
         <TextLogo />
-
-        <button>
-          <span className="profile">A</span>
-          <span>Aryan</span>
-        </button>
+        <div>
+          <button>
+            <span className="profile">A</span>
+            <span>Aryan</span>
+          </button>
+          <RiMenu3Line onClick={openMenu} className="menu" />
+        </div>
       </header>
       <section className="content">
-        <DashboardNav active={active} setActive={setActive} />
-        <section>
+        {width > 700 ? (
+          <DashboardNav
+            active={active}
+            setActive={setActive}
+            menu={menu}
+            setMenu={setMenu}
+          />
+        ) : menu ? (
+          <DashboardNav
+            active={active}
+            setActive={setActive}
+            menu={menu}
+            setMenu={setMenu}
+          />
+        ) : null}
+        <section className="intr">
           {active === 'tickets' && <Tickets />}
           {active === 'users' && <Users />}
           {active === 'reports' && <Reports />}
@@ -49,7 +74,7 @@ const StyledDashboard = styled.main`
   background: var(--dashboard-background);
 
   position: relative;
-  header {
+  .dashboardHeader {
     z-index: 2;
     width: 100%;
     color: var(--dashboard-white);
@@ -58,14 +83,21 @@ const StyledDashboard = styled.main`
     justify-content: space-between;
     align-items: center;
 
-    button {
+    div {
       width: 11%;
       display: flex;
       align-items: center;
+      gap: var(--paddingBlock);
+    }
+    button {
+      --radius: 15px;
+      width: 100%;
+      display: flex;
+      align-items: center;
       justify-content: flex-start;
-      font-size: 1rem;
+      font-size: clamp(0.6rem, 2vw, 1rem);
       gap: calc(var(--paddingInline) / 2);
-      border-radius: 15px;
+      border-radius: var(--radius);
       overflow: hidden;
       color: var(--dashboard-white);
       background: #fff1;
@@ -75,14 +107,32 @@ const StyledDashboard = styled.main`
       .profile {
         width: 2.3em;
         aspect-ratio: 1/1;
-        border-radius: 15px;
-
+        border-radius: var(--radius);
         display: grid;
         place-items: center;
         background: var(--dashboard-accent);
         color: #000;
         font-size: 1.2em;
         font-weight: 700;
+      }
+    }
+
+    .menu {
+      display: none;
+      color: var(--dashboard-white);
+      font-size: clamp(1.5rem, 2vw, 2.5rem);
+    }
+
+    @media only screen and (max-width: 700px) {
+      div {
+        width: 35%;
+        button {
+          outline: 1px solid var(--dashboard-accent);
+          --radius: 10px;
+        }
+      }
+      .menu {
+        display: block;
       }
     }
   }
@@ -94,11 +144,10 @@ const StyledDashboard = styled.main`
 
     width: 100%;
 
-    section {
+    .intr {
       width: 100%;
-      flex: 1;
-      //background: #000;
-      padding: var(--padding);
+      height: 100%;
+      display: flex;
     }
   }
 

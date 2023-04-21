@@ -11,7 +11,7 @@ const style = css`
 
   :root {
     //constants
-    --paddingInline: clamp(2rem, 4vw, 4rem);
+    --paddingInline: clamp(1.5rem, 4vw, 4rem);
     --paddingBlock: clamp(1rem, 2vw, 2rem);
     --padding: var(--paddingBlock) var(--paddingInline);
 
@@ -33,6 +33,15 @@ const style = css`
     --dashboard-background: linear-gradient(to right, #131417, #000);
     --dashboard-white: #aeaeae;
     --dashboard-accent: #02c39a;
+
+    --users-button-bg: #3265ee;
+    --users-button-text: #fff;
+
+    @media only screen and (max-width: 700px) {
+      --login-background: rgba(255, 255, 255, 0.5);
+      --login-form-input-accent: #000a;
+      --dashboard-white: #aeaeae;
+    }
   }
 
   body {

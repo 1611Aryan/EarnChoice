@@ -23,7 +23,7 @@ const Tickets = () => {
           <div className="content">
             <div className="circle1"></div>
             <div className="circle2"></div>
-            <span>7 SEM</span>
+            <span>10 SEM</span>
           </div>
         </div>
         <div className="card">
@@ -37,7 +37,7 @@ const Tickets = () => {
           <div className="content">
             <div className="circle1"></div>
             <div className="circle2"></div>
-            <span>21 SEM</span>
+            <span>20 SEM</span>
           </div>
         </div>
       </main>
@@ -47,19 +47,21 @@ const Tickets = () => {
 
 const StyledTickets = styled.div`
   width: 100%;
-  height: 100%;
+  flex: 1;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  padding: var(--padding);
 
   h1 {
     display: inline;
     color: #fffc;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2rem);
     padding: calc(var(--paddingBlock) / 2) calc(var(--paddingInline) / 2);
   }
   main {
     width: 100%;
+    height: 100%;
     flex: 1;
     display: flex;
     // flex-direction: column;
@@ -67,7 +69,7 @@ const StyledTickets = styled.div`
     align-items: center;
     flex-wrap: wrap;
     overflow: hidden;
-    gap: 2rem;
+    gap: clamp(1rem, 2vw, 2rem);
     .card {
       width: 28%;
       aspect-ratio: 1/1;
@@ -78,15 +80,16 @@ const StyledTickets = styled.div`
       transform: scale(0.9) translate3d(0, 0, 0);
       transition: 300ms all ease-in-out;
 
-      cursor: pointer;
+      --edge: 10px;
+      --edge2: 11px;
 
       &::before {
         content: '';
         position: absolute;
-        bottom: -10.5px;
+        bottom: calc(-1 * var(--edge));
         left: 0;
         width: 100%;
-        height: 11px;
+        height: var(--edge2);
         background: inherit;
         filter: brightness(70%);
         transform-origin: top;
@@ -96,10 +99,10 @@ const StyledTickets = styled.div`
       &::after {
         content: '';
         position: absolute;
-        left: -10.5px;
+        left: calc(-1 * var(--edge));
         top: 0;
         height: 100%;
-        width: 11px;
+        width: var(--edge2);
         background: inherit;
         filter: brightness(70%);
         -webkit-transform-origin: right;
@@ -145,7 +148,7 @@ const StyledTickets = styled.div`
           border-radius: 50%;
         }
         span {
-          font-size: 3rem;
+          font-size: clamp(1.5rem, 3vw, 3rem);
           font-weight: 700;
           color: #fff;
           z-index: 2;
@@ -168,6 +171,21 @@ const StyledTickets = styled.div`
 
     .card:nth-of-type(5) {
       background: linear-gradient(to right, #ffb75e 0%, #ed8f03 100%);
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    main {
+      height: 100%;
+      justify-content: space-between;
+
+      .card {
+        width: 38%;
+        aspect-ratio: 1/1;
+
+        --edge: 5.5px;
+        --edge2: 6px;
+      }
     }
   }
 `;

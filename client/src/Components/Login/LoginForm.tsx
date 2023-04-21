@@ -16,12 +16,12 @@ const LoginForm = () => {
         <span className="tagLine">Every ticket is a chance to win big</span>
       </header>
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">User ID</label>
         <input
           type="text"
           className="form-control"
           id="email"
-          placeholder="Enter your email address"
+          placeholder="Enter your User ID"
         />
         <span className="hover"></span>
       </div>
@@ -142,6 +142,11 @@ const StyledForm = styled.form`
     width: 100%;
     height: auto;
     aspect-ratio: 1/1.05;
+    header {
+      .tagLine {
+        color: #222;
+      }
+    }
     button {
       border: 0;
     }

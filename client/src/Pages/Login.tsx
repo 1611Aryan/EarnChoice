@@ -60,12 +60,7 @@ const StyledLogin = styled.main`
 
     .bg {
       position: absolute;
-      bottom: -20%;
-      left: 50%;
-      width: 180%;
-      height: 60%;
-      transform: translate(-50%);
-      border-radius: 100%;
+      inset: 0;
       overflow: hidden;
     }
   }
