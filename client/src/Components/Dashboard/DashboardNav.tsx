@@ -44,29 +44,31 @@ const DashboardNav: React.FC<{
 
 const StyledNav = styled.nav`
   width: 100%;
-  padding: 0 var(--paddingInline);
+  //padding: 0 var(--paddingInline);
   ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 2px solid #ddd;
-    border-bottom: 2px solid #489354;
+
+    border-bottom: 2px solid var(--dashboard-accent);
   }
   li {
     flex: 1;
+    color: var(--dashboard-white);
     cursor: pointer;
     padding: calc(var(--paddingBlock) / 2) calc(var(--paddingInline) / 2);
     transition: all 200ms ease-in-out;
   }
 
   li:not(.active):hover {
-    background: #489354cc;
-    color: #fff;
+    background: var(--dashboard-accent);
+    opacity: 0.8;
+    color: #222;
   }
 
   .active {
-    background: #489354;
-    color: #fff;
+    background: var(--dashboard-accent);
+    color: #000;
   }
 `;
 

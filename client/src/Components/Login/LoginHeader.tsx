@@ -11,6 +11,7 @@ const LoginHeader = () => {
 const StyledHeader = styled.header`
   position: relative;
   z-index: 2;
+  width: 100%;
   padding: var(--padding);
   color: var(--login-heading);
 `;

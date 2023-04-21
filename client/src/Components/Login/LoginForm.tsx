@@ -11,22 +11,27 @@ const LoginForm = () => {
 
   return (
     <StyledForm onSubmit={submitHandler}>
-      <h2>Login Form</h2>
+      <header>
+        <h2>Login Now</h2>
+        <span className="tagLine">Every ticket is a chance to win big</span>
+      </header>
       <div className="form-group">
+        <label htmlFor="email">Email</label>
         <input
           type="text"
           className="form-control"
           id="email"
-          placeholder="Username"
+          placeholder="Enter your email address"
         />
         <span className="hover"></span>
       </div>
       <div className="form-group">
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           className="form-control"
           id="password"
-          placeholder="Password"
+          placeholder="**********"
         />
         <span className="hover"></span>
       </div>
@@ -44,32 +49,47 @@ const StyledForm = styled.form`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  width: 35%;
+  width: 85%;
+
   height: auto;
-  aspect-ratio: 1/1.05;
+
   background: var(--login-form-bg);
 
-  padding: var(--paddingBlock) calc(var(--paddingInline) / 1.5);
+  padding: var(--padding);
 
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: center;
   font-size: clamp(0.8rem, 2vw, 1rem);
-  box-shadow: inset 2px 2px 10px rgb(0, 0, 0, 0.07),
-    inset 2px -2px 10px rgb(0, 0, 0, 0.07),
-    inset 2px -2px 10px rgb(0, 0, 0, 0.07),
-    inset -2px -2px 10px rgb(0, 0, 0, 0.07);
-  h2 {
-    font-size: 2.2em;
-    font-weight: 500;
+  gap: calc(var(--paddingInline) / 1.25);
+
+  header {
+    h2 {
+      font-size: 2.35em;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .tagLine {
+      display: inline-block;
+      font-size: 1.5em;
+      text-align: center;
+      color: #888;
+      margin-top: 0.4em;
+    }
   }
 
   .form-group {
     width: 100%;
     position: relative;
     overflow: hidden auto;
+    label {
+      display: inline-block;
+      font-size: 1.3em;
+      margin-bottom: 0.2em;
+      font-family: var(--fontSerif);
+    }
     input {
       width: 100%;
       padding: calc(var(--paddingBlock) / 2);
@@ -87,7 +107,7 @@ const StyledForm = styled.form`
       height: var(--input-hover-height);
       background: var(--login-form-button-bg);
       transform: translate(-100%);
-      transition: all 500ms ease-out;
+      transition: all 300ms ease-out;
     }
 
     //hover
@@ -102,12 +122,12 @@ const StyledForm = styled.form`
   button {
     width: 100%;
     padding: calc(var(--paddingBlock) / 2);
-    border: 3px solid var(--login-form-button-text);
+    border: 2px solid var(--login-form-button-text);
     background: var(--login-form-button-bg);
     color: var(--login-form-button-text);
     font-weight: 500;
     font-size: 1.2em;
-    border-radius: 0.25em;
+
     transition: all 200ms ease-in-out;
     &:hover,
     &:focus {
@@ -119,9 +139,12 @@ const StyledForm = styled.form`
 
   @media only screen and (max-width: 700px) {
     --input-hover-height: 2px;
-    width: calc(100% - var(--paddingInline) * 2);
+    width: 100%;
     height: auto;
     aspect-ratio: 1/1.05;
+    button {
+      border: 0;
+    }
   }
 `;
 

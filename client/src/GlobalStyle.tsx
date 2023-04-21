@@ -16,37 +16,36 @@ const style = css`
     --padding: var(--paddingBlock) var(--paddingInline);
 
     //fonts
-    --fontSans: 'DM Sans', sans-serif;
-    --fontSerif: 'DM Serif Display', serif;
+
+    --fontSerif: 'Arvo', serif;
+    --fontSans: 'Open Sans', sans-serif;
 
     //Login Colors
-    --login-background: rgb(63, 102, 106, 0.36);
-    --login-heading: #fff;
-    --login-form-bg: #fff;
+    --login-background: rgb(0, 0, 0, 0.3);
+    --login-heading: #000;
+    --login-form-bg: transparent;
     --login-form-input-accent: #0006;
     --login-form-input-bg: #fff;
-    --login-form-button-bg: #00adb5;
+    --login-form-button-bg: #000;
     --login-form-button-text: #fff;
 
     //dashboard colors
-    --dashboard-background: #fff;
-    --dashboard-heading: #000;
-    --dashboard-text: #00adb5;
-    --dashboard-button-bg: #00adb5;
-    --dashboard-button-text: #fff;
-    --dashboard-button-hover-bg: #00adb5;
-    --dashboard-button-hover-text: #fff;
-    --dashboard-button-active-bg: #00adb5;
-    --dashboard-button-active-text: #fff;
-    --dashboard-button-disabled-bg: #fff;
-    --dashboard-button-disabled-text: #00adb5;
-    --dashboard-button-disabled-hover-bg: #00adb5;
-    --dashboard-button-disabled-hover-text: #fff;
-    --dashboard-button-disabled-active-bg: #00adb5;
+    --dashboard-background: linear-gradient(to right, #131417, #000);
+    --dashboard-white: #aeaeae;
+    --dashboard-accent: #02c39a;
   }
 
   body {
     font-family: var(--fontSans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--fontSerif);
   }
 
   input {
