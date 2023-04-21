@@ -1,18 +1,27 @@
 import styled from '@emotion/styled';
+import { SetStateAction } from 'react';
 import Select from 'react-select';
 
 const options = [
-  { value: 'Admin', label: 'Admin' },
-  { value: 'Master', label: 'Master' },
-  { value: 'Super', label: 'Super' },
-  { value: 'User', label: 'User' },
+  { value: 0, label: 'Admin' },
+  { value: 1, label: 'Master' },
+  { value: 2, label: 'Super' },
+  { value: 3, label: 'User' },
 ];
 
-const UsersHeader = () => {
+const UsersHeader: React.FC<{
+  setModal: React.Dispatch<SetStateAction<boolean>>;
+  setUserType: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ setModal, setUserType }) => {
+  const openModal = () => setModal(true);
   return (
     <StyledHeader>
-      <Select className="select" options={options} />
-      <button>Create Master</button>
+      <Select
+        className="select"
+        options={options}
+        onChange={e => setUserType(prev => (e ? e.value : prev))}
+      />
+      <button onClick={openModal}>Create Master</button>
     </StyledHeader>
   );
 };
@@ -26,7 +35,7 @@ const StyledHeader = styled.header`
 
   .select {
     width: 20%;
-    font-size: 1.15rem;
+    font-size: clamp(0.75rem, 2vw, 1.15rem);
 
     &:focus,
     &:hover {
@@ -37,8 +46,14 @@ const StyledHeader = styled.header`
     padding: calc(var(--paddingBlock) / 2) calc(var(--paddingInline) / 1.5);
     background: var(--users-button-bg);
     color: var(--users-button-text);
-    font-size: 1rem;
+    font-size: calc(0.8rem, 2vw, 1rem);
     border-radius: 3px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .select {
+      width: 50%;
+    }
   }
 `;
 

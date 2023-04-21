@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
-import { RiMenu3Line } from 'react-icons/ri';
+import DashboardHeader from '../Components/Dashboard/DashboardHeader';
 import DashboardNav from '../Components/Dashboard/DashboardNav';
-import TextLogo from '../Components/Shared/TextLogo';
 import Account from '../Sections/Account';
 import Purchased from '../Sections/Purchased';
 import Reports from '../Sections/Reports';
@@ -25,16 +24,7 @@ const Dashboard = () => {
 
   return (
     <StyledDashboard>
-      <header className="dashboardHeader">
-        <TextLogo />
-        <div>
-          <button>
-            <span className="profile">A</span>
-            <span>Aryan</span>
-          </button>
-          <RiMenu3Line onClick={openMenu} className="menu" />
-        </div>
-      </header>
+      <DashboardHeader setMenu={setMenu} />
       <section className="content">
         {width > 700 ? (
           <DashboardNav
@@ -74,68 +64,7 @@ const StyledDashboard = styled.main`
   background: var(--dashboard-background);
 
   position: relative;
-  .dashboardHeader {
-    z-index: 2;
-    width: 100%;
-    color: var(--dashboard-white);
-    padding: var(--padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    div {
-      width: 11%;
-      display: flex;
-      align-items: center;
-      gap: var(--paddingBlock);
-    }
-    button {
-      --radius: 15px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: clamp(0.6rem, 2vw, 1rem);
-      gap: calc(var(--paddingInline) / 2);
-      border-radius: var(--radius);
-      overflow: hidden;
-      color: var(--dashboard-white);
-      background: #fff1;
-      outline: 3px solid var(--dashboard-accent);
-      transition: all 200ms ease;
-
-      .profile {
-        width: 2.3em;
-        aspect-ratio: 1/1;
-        border-radius: var(--radius);
-        display: grid;
-        place-items: center;
-        background: var(--dashboard-accent);
-        color: #000;
-        font-size: 1.2em;
-        font-weight: 700;
-      }
-    }
-
-    .menu {
-      display: none;
-      color: var(--dashboard-white);
-      font-size: clamp(1.5rem, 2vw, 2.5rem);
-    }
-
-    @media only screen and (max-width: 700px) {
-      div {
-        width: 35%;
-        button {
-          outline: 1px solid var(--dashboard-accent);
-          --radius: 10px;
-        }
-      }
-      .menu {
-        display: block;
-      }
-    }
-  }
   .content {
     z-index: 2;
     flex: 1;

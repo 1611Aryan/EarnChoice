@@ -25,7 +25,6 @@ const StyledDiv = styled.div`
   padding: calc(var(--paddingBlock) / 2) var(--paddingInline);
 
   .searchBar {
-    //width: 20%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,20 +35,21 @@ const StyledDiv = styled.div`
     overflow: hidden;
 
     .searchIcon {
-      font-size: 1.25rem;
+      font-size: clamp(0.8rem, 2vw, 1.25rem);
       padding: 0 calc(var(--paddingInline) / 4);
     }
     input {
       padding: calc(var(--paddingBlock) / 3) calc(var(--paddingInline) / 8);
       background: transparent;
-      font-size: 1.1rem;
+      font-size: clamp(0.7rem, 2vw, 1.1rem);
+
       font-weight: 300;
     }
   }
 
   .resultCount {
     color: #fff;
-
+    font-size: clamp(0.7rem, 2vw, 1.1rem);
     span {
       background: #ffb75e;
       padding: 4px 6px;

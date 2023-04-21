@@ -35,9 +35,7 @@ const LoginForm = () => {
         />
         <span className="hover"></span>
       </div>
-      <button type="submit" className="btn btn-primary">
-        Login
-      </button>
+      <button type="submit">Login</button>
     </StyledForm>
   );
 };

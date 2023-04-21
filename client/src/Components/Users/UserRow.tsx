@@ -53,7 +53,7 @@ const StyledRow = styled.li`
         background: #e9e9e9;
         color: #000;
         padding: 0 0.4em;
-        font-size: 1.2em;
+        font-size: clamp(0.8rem, 2vw, 1.2em);
         line-height: 1;
       }
     }
@@ -84,7 +84,7 @@ const StyledRow = styled.li`
       color: #000;
       padding: 0.2em 0.4em;
       font-weight: 500;
-      font-size: 1.2em;
+      font-size: clamp(0.8rem, 2vw, 1.2em);
       line-height: 1;
       cursor: pointer;
     }
